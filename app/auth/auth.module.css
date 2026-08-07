@@ -1,0 +1,47 @@
+/* SoftlexAI Auth — imported from claude.ai/design (SoftlexAI Chat Interface project). */
+
+.root {
+  font-family: var(--landing-font), sans-serif;
+  color: #1b1714;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+.root a {
+  color: inherit;
+  text-decoration: none;
+}
+.root ::selection {
+  background: #ffd9c7;
+  color: #7a2e0c;
+}
+.root input {
+  font-family: inherit;
+}
+.root input:focus {
+  outline: none;
+  border-color: #ff6b2c !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 44, .14);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowA {
+  0%, 100% { opacity: .5; }
+  50% { opacity: .85; }
+}
+
+.fadeUpAnim { animation: fadeUp .35s ease both; }
+.glowAnim { animation: glowA 6s ease-in-out infinite; }
+
+.authbtn:hover { filter: brightness(1.04); }
+.oauth:hover { background: #fffbf8 !important; }
+
+@media (max-width: 860px) {
+  .brandpanel { display: none !important; }
+  .formwrap { padding: 36px 22px !important; }
+}
+@media (max-width: 400px) {
+  .formwrap { padding: 28px 16px !important; }
+}

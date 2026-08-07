@@ -1,0 +1,85 @@
+/* SoftlexAI Chat — imported from claude.ai/design (SoftlexAI Chat Interface project). */
+
+.root {
+  font-family: var(--landing-font), sans-serif;
+  color: #1b1714;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  height: 100vh;
+}
+.root a {
+  color: inherit;
+  text-decoration: none;
+}
+.root ::selection {
+  background: #ffd9c7;
+  color: #7a2e0c;
+}
+.root textarea {
+  font-family: inherit;
+}
+
+.chatscroll::-webkit-scrollbar,
+.sidescroll::-webkit-scrollbar {
+  width: 8px;
+}
+.chatscroll::-webkit-scrollbar-thumb,
+.sidescroll::-webkit-scrollbar-thumb {
+  background: #eee2d8;
+  border-radius: 8px;
+}
+
+@keyframes msgUp {
+  from { opacity: 0; transform: translateY(22px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes dotb {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.msgUpAnim { animation: msgUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.dotbAnim { animation: dotb 1.2s infinite; }
+
+.histbtn:hover { background: #fff1ea !important; }
+.histbtn.active {
+  background: #fff1ea !important;
+  box-shadow: inset 3px 0 0 #ff6b2c;
+}
+
+.menubtn { display: none; }
+.mbackdrop { display: none; }
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100vh !important;
+    width: 288px !important;
+    max-width: 86vw;
+    display: flex !important;
+    z-index: 80;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 0 50px rgba(90, 50, 20, 0.28);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .mbackdrop.show {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 18, 10, 0.4);
+    z-index: 75;
+    animation: fadeIn 0.2s ease;
+  }
+  .menubtn { display: flex !important; }
+  .deskcollapse { display: none !important; }
+  .topbar { padding: 12px 16px !important; }
+  .thread { padding-left: 16px !important; padding-right: 16px !important; }
+  .promptpad { padding: 10px 14px 16px !important; }
+}
