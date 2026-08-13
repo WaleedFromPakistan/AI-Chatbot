@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import styles from "./chat.module.css";
 
 interface ChatThreadProps {
@@ -132,8 +134,8 @@ export function ChatThread({ conversationId, sessionId, initialMessages, userNam
                       </span>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: 13, fontWeight: 700, color: "#B8420F", marginBottom: 5 }}>SoftlexAI</div>
-                        <div style={{ fontSize: 15, lineHeight: 1.65, color: "#2A2420", whiteSpace: "pre-wrap" }}>
-                          {text}
+                        <div className={styles.markdown} style={{ fontSize: 15, lineHeight: 1.65, color: "#2A2420" }}>
+                          <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
                           {showTyping && (
                             <span style={{ display: "inline-flex", gap: 5 }}>
                               <span className={styles.dotbAnim} style={{ width: 7, height: 7, borderRadius: "50%", background: "#FF8A57", display: "inline-block" }} />
